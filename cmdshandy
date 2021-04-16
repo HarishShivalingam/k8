@@ -13,6 +13,14 @@ start time
 kubect1 get pods -o=jsonpath='{range
 .items[*]}{.metadata.name}{"\t"}{.status.podIP}{"\n"}{end}'
 
+status
+kubectl get po -o=custom-columns="POD_NAME:.metadata.name,
+POD_STATUS:.status.containerStatuses[].state"
+
+image version
+kubectl get po nginx -o
+jsonpath='{.spec.containers[].image}{"\n"}'
+
 IP
 Kubect1 get po -o wide
 Using JsonPath
@@ -22,5 +30,26 @@ kubect1 get pods -o=jsonpath='{range
 kubectl get po nginx --v=7
 
 cmd with in pod creation
-kubectl run busybox --image=busybox --restart=Never -- /bin/sh -c
+kubectl run busybox --image= --restart=Never -- /bin/sh -c
 "sleep 3600"
+kubectl run busybox --image= -it --rm --restart=Never --
+/bin/sh -c 'echo hello world'
+
+inside pods env
+kubectl run busybox --image=busybox --restart=Never –-rm -it -- env > envpod.yaml
+
+DNS
+create dep
+expose port and target port (svc)
+create pod
+inside the pod 
+k exec -it pod --nslookup expservice >
+k exec -it pod --nslookup dep.pod.default.pod >  
+
+NonPv
+
+end 
+
+volumes:
+- name
+  emptyDir[]
