@@ -35,6 +35,8 @@ kubectl run busybox --image= --restart=Never -- /bin/sh -c
 kubectl run busybox --image= -it --rm --restart=Never --
 /bin/sh -c 'echo hello world'
 
+-o NAME
+
 inside pods env
 kubectl run busybox --image=busybox --restart=Never –-rm -it -- env > envpod.yaml
 
