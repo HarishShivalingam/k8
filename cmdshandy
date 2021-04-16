@@ -55,3 +55,9 @@ end
 volumes:
 - name
   emptyDir[]
+  
+  cnt
+  [“/bin/sh”, “-c”, “if [ -f /workdir/xx.txt ]; then sleep 10000; else exit 1; fi”]
+  initcnt
+  ["/bin/sh", "-c", "touch /workdir/xx.txt"]
+cmd 
