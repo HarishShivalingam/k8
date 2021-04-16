@@ -1,0 +1,26 @@
+List all the pods
+kubectl get pods -o=jsonpath="{.items[*]['metadata.name',
+'metadata.namespace']}"
+
+custom 
+kubectl get pods -o=custom-columns="POD_NAME:.metadata.name,
+POD_STATUS:.status.containerStatuses[].state"
+
+image version 
+jsonpath='{.spec.containers[].image}{"\n"}'
+
+start time
+kubect1 get pods -o=jsonpath='{range
+.items[*]}{.metadata.name}{"\t"}{.status.podIP}{"\n"}{end}'
+
+IP
+Kubect1 get po -o wide
+Using JsonPath
+kubect1 get pods -o=jsonpath='{range
+.items[*]}{.metadata.name}{"\t"}{.status.podIP}{"\n"}{end}'
+
+kubectl get po nginx --v=7
+
+cmd with in pod creation
+kubectl run busybox --image=busybox --restart=Never -- /bin/sh -c
+"sleep 3600"
